@@ -1,0 +1,24 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Fyyur | Artists{% endblock %}
+{% block content %}
+<ul class="items">
+{% if artists %}
+	{% for artist in artists %}
+	<li>
+		<a href="/artists/{{ artist.id }}">
+			<i class="fas fa-users"></i>
+			<div class="item">
+				<h5>{{ artist.name }}</h5>
+			</div>
+		</a>
+	</li>
+	{% endfor %}
+{% else %}
+
+	<div class="item">
+		<h4>Search for a Venue or Artist by State or City</h4>
+	</div>
+
+{% endif %}
+</ul>
+{% endblock %}

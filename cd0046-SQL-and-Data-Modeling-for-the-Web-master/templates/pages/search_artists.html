@@ -1,0 +1,38 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Fyyur | Artists Search{% endblock %}
+{% block content %}
+<h3>Number of search datas for "{{ search_term }}": {{ datas.count }}</h3>
+{% if artist %}
+<ul class="items">
+	{% for artist in datas.data %}
+	<li>
+		<a href="/artists/{{ artist.id }}">
+			<i class="fas fa-users"></i>
+			<div class="item">
+				<h5>{{ artist.name }}</h5>
+			</div>
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+
+{% else %}
+<ul class="items">
+	{% for region in datas.data %}
+	<li>
+		{% if region.adddatas %}
+		<a href="/venues/{{ region.id }}">
+			{% else %}
+			<a href="/artists/{{ region.id }}">
+				{% endif %}
+				<i class="fas fa-users"></i>
+				<div class="item">
+					<h5>{{ region.name }}</h5>
+				</div>
+			</a>
+	</li>
+	{% endfor %}
+</ul>
+
+{% endif %}
+{% endblock %}
